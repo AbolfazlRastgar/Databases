@@ -1,6 +1,6 @@
-# Microsoft SQL Server and Postgres Lab
+# Microsoft SQL Server and Postgres Repo
 
-A curated collection of SQL Server and PostgreSQL scripts, real-world projects, and technical notes.
+A collection of SQL Server and PostgreSQL scripts, real-world projects, and things I learn along the way.
 
 ## This repository is a mix of:
 
@@ -17,7 +17,7 @@ A curated collection of SQL Server and PostgreSQL scripts, real-world projects, 
 
 ## Topics Covered
 
-- Maintenance Tuning  
+- Maintenance  
 - Monitoring  
 - Performance Tuning  
 - Database Internals
