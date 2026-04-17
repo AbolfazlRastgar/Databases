@@ -1,4 +1,4 @@
-# SQL Server Lab
+# Microsoft SQL Server and Postgres Lab
 
 A curated collection of SQL Server and PostgreSQL scripts, real-world projects, and technical notes.
 
