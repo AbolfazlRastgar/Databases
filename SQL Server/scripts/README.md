@@ -1,27 +1,23 @@
 # SQL Server Scripts
 
-This folder contains T-SQL scripts for SQL Server administration, organized by area. Each subfolder has its own README that explains the scripts in detail.
-
-All scripts include a header block documenting purpose, required permissions, SQL Server version compatibility, and safety level.
+T-SQL scripts for SQL Server administration, organized by area. Each subfolder has its own README covering what the scripts do, when to use them, required permissions, and safety level.
 
 ---
 
-## Script Index
+## Script Categories
 
-| Category | Folder | Scripts | Safety Level |
-|---|---|---|---|
-| Monitoring | [01-monitoring](./01-monitoring/) | current-running-requests, long-running-queries, session-resource-usage, wait-stats-snapshot | Read-only |
-| Performance | [02-performance](./02-performance/) | top-cpu-queries, top-io-queries, missing-indexes-report, index-fragmentation-report | Read-only |
-| Blocking & Sessions | [03-blocking-and-sessions](./03-blocking-and-sessions/) | find-blocking-chain, who-is-blocking-everyone, sleeping-sessions-with-open-transactions | Read-only |
-| Blocking & Sessions | [03-blocking-and-sessions](./03-blocking-and-sessions/) | kill-command-generator | Generates commands only |
-| Blocking & Sessions | [03-blocking-and-sessions/sp_WhoIsActive-usage](./03-blocking-and-sessions/sp_WhoIsActive-usage/) | basic-usage, find-blocking-chain, capture-to-table | Read-only |
-| Backup & Maintenance | [04-backup-and-maintenance](./04-backup-and-maintenance/) | backup-status-last-7-days, databases-without-recent-backup, backup-duration-trend, restore-history | Read-only |
-| Backup & Maintenance | [04-backup-and-maintenance/ola-hallengren-maintenance](./04-backup-and-maintenance/ola-hallengren-maintenance/) | example job scripts, commandlog query | Generates commands only / Read-only |
-| SQL Agent | [05-sql-agent](./05-sql-agent/) | failed-jobs-last-24h, long-running-jobs, disabled-jobs-and-schedules | Read-only |
-| TempDB | [06-tempdb](./06-tempdb/) | tempdb-space-usage, tempdb-usage-by-session | Read-only |
-| TempDB | [06-tempdb](./06-tempdb/) | move-tempdb-files-generate-script | Generates commands only |
-| Security & Permissions | [07-security-and-permissions](./07-security-and-permissions/) | server-role-members, database-owner-check, orphaned-users-check | Read-only |
-| Health Checks | [08-health-checks](./08-health-checks/) | database-file-growth-settings, database-compatibility-levels, high-vlf-count-check, disk-space-overview | Read-only |
+| Folder | Purpose | Safety Level |
+|---|---|---|
+| [monitoring](./monitoring/) | Current activity, wait statistics, session resource usage | Read-only |
+| [performance](./performance/) | Plan cache analysis, missing indexes, index fragmentation | Read-only |
+| [blocking-and-sessions](./blocking-and-sessions/) | Blocking chains, sleeping sessions with open transactions, KILL generator | Read-only / Generates commands only |
+| [backup-and-maintenance](./backup-and-maintenance/) | Backup history, missing backups, duration trends, restore history | Read-only |
+| [sql-agent](./sql-agent/) | Failed jobs, long-running jobs, disabled schedules | Read-only |
+| [tempdb](./tempdb/) | TempDB space usage, session allocations, file move generator | Read-only / Generates commands only |
+| [security-and-permissions](./security-and-permissions/) | Server roles, database owners, orphaned users | Read-only |
+| [health-checks](./health-checks/) | File growth settings, compatibility levels, VLF counts, disk space | Read-only |
+| [Find blocking processes](./Find%20blocking%20processes/) | Blocking process detection scripts | Read-only |
+| [SQL Server Backup Status & Duration Monitoring View](./SQL%20Server%20Backup%20Status%20%26%20Duration%20Monitoring%20View/) | Centralized backup monitoring view built on Redgate SQL Monitor — aggregates backup freshness, file references, and duration trends across all monitored instances | Read-only |
 
 ---
 
@@ -29,6 +25,6 @@ All scripts include a header block documenting purpose, required permissions, SQ
 
 | Level | What It Means |
 |---|---|
-| **Read-only** | Queries system views and DMVs only. No changes made. |
-| **Generates commands only** | Produces T-SQL statements as output. Does not execute them. Review output before running. |
-| **Changes server state** | Modifies server or database configuration. Not used in this repository by default. |
+| **Read-only** | Queries system views, DMVs, or msdb only. No changes made to the server. Safe to run on production. |
+| **Generates commands only** | Produces T-SQL output (e.g. KILL, ALTER DATABASE) but does not execute it. Review all output before running. |
+| **Changes server state** | Modifies server or database configuration. Not the default behavior of any script in this repository. |
